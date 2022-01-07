@@ -1,11 +1,12 @@
 {
-  "name": "vuestore",
-  "version": "0.0.0",
+  "name": "vue-ts-template",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "cypress open"
+    "test": "cypress open",
+    "test:ci": "cypress run --headless"
   },
   "dependencies": {
     "@vueuse/head": "0.7.4",
