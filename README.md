@@ -9,6 +9,7 @@
 ## 권장 IDE 설정
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+
 ## 제작에 참고한 자료들
 
 - 프로젝트 생성: https://vitejs.dev/guide/#trying-vite-online
@@ -16,4 +17,12 @@
 - cypress 설정: https://www.cypress.io/blog/2021/04/06/getting-start-with-cypress-component-testing-vue-2-3/#vue3usage
 - cypress typescript 설정: https://docs.cypress.io/guides/tooling/typescript-support#Install-TypeScript
 - Volar Extension: https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
-- 
+-
+
+## 실행
+
+```shell
+$ npm install
+$ npm run dev
+$ npm run test
+```
