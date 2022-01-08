@@ -11,9 +11,11 @@
   "parserOptions": {
     "ecmaVersion": 2020
   },
+  "plugins": ["prettier"],
   "rules": {
     "no-console": "off",
     "no-debugger": "off",
-    "comma-dangle": ["error", "only-multiline"]
+    "comma-dangle": ["error", "only-multiline"],
+    "prettier/prettier": "error"
   }
 }
