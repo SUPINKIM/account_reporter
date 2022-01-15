@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { useStore } from 'vuex';
+import Modal from './ui/Modal.vue';
+
+const store = useStore();
+
 const buttonStyle =
   'flex items-center justify-center gap-x-2 px-2 hover:scale-105';
+
+const onHandleClick = () => {
+  store.commit('openModal');
+};
 </script>
 
 <template>
-  <nav
-    class="w-full h-12 grid grid-cols-7 fixed top-0 bg-amber-200 cursor-pointer"
-  >
+  <nav class="w-full h-12 grid grid-cols-7 bg-amber-200 cursor-pointer">
     <div
       id="menu-bar"
       class="h-full col-span-1 text-xl leading-10 flex items-center pl-8 hover:scale-105"
@@ -19,15 +26,15 @@ const buttonStyle =
       가계 리포터 🚀
     </h1>
     <div class="flex justify-center col-span-1 leading-10 gap-x-2">
-      <button :class="buttonStyle">
+      <button :class="buttonStyle" @click="onHandleClick">
         수입<font-awesome-icon icon="plus" class="text-red-300" />
       </button>
-      <button :class="buttonStyle">
+      <button :class="buttonStyle" @click="onHandleClick">
         지출<font-awesome-icon icon="plus" class="text-blue-300" />
       </button>
     </div>
   </nav>
-  <Teleport />
+  <Modal />
 </template>
 
 <style scoped />
