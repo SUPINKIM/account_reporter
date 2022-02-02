@@ -3,8 +3,6 @@ interface IIncomeList {
   title: string;
   income: number;
 }
-
-const list: IIncomeList = [];
 </script>
 
 <template>

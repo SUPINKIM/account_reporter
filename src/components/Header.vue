@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useStore } from 'vuex';
-import Modal from './ui/Modal.vue';
+import { ModalView } from '../vuex/store';
 
 const store = useStore();
 
 const buttonStyle =
   'flex items-center justify-center gap-x-2 px-2 hover:scale-105';
 
-const onHandleClick = () => {
+const onClickHandle = (payload: ModalView) => {
+  store.commit('setModalView', payload);
   store.commit('openModal');
 };
 </script>
@@ -26,15 +27,14 @@ const onHandleClick = () => {
       가계 리포터 🚀
     </h1>
     <div class="flex justify-center col-span-1 leading-10 gap-x-2">
-      <button :class="buttonStyle" @click="onHandleClick">
+      <button :class="buttonStyle" @click="onClickHandle('INCOME_FORM')">
         수입<font-awesome-icon icon="plus" class="text-red-300" />
       </button>
-      <button :class="buttonStyle" @click="onHandleClick">
+      <button :class="buttonStyle" @click="onClickHandle('EXPENDITURE_FORM')">
         지출<font-awesome-icon icon="plus" class="text-blue-300" />
       </button>
     </div>
   </nav>
-  <Modal />
 </template>
 
 <style scoped />
