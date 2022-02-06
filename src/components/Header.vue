@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from 'vuex';
-import { ModalView } from '../vuex/store';
+import { ModalView } from '../vuex/ModalStore';
 
 const store = useStore();
 
@@ -8,8 +8,8 @@ const buttonStyle =
   'flex items-center justify-center gap-x-2 px-2 hover:scale-105';
 
 const onClickHandle = (payload: ModalView) => {
-  store.commit('setModalView', payload);
-  store.commit('openModal');
+  store.commit('ModalStore/setModalView', payload);
+  store.commit('ModalStore/openModal');
 };
 </script>
 
