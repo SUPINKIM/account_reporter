@@ -1,7 +1,6 @@
 import { Module } from 'vuex';
+import { ModalView } from '../utils/types';
 import { RootState } from './store';
-
-export type ModalView = 'INCOME_FORM' | 'EXPENDITURE_FORM';
 
 export interface IModalState {
   isModalOpened: boolean;

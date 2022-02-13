@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useStore } from 'vuex';
+import { useStore } from '../../vuex/store';
+import { ModalView } from '../../utils/types';
 import { defineAsyncComponent } from '@vue/runtime-core';
 
 const store = useStore();
@@ -9,11 +10,15 @@ const onHandleClickButton = () => {
   store.commit('ModalStore/closeModal');
 };
 
-const components = {
-  INCOME_FORM: defineAsyncComponent(() => import('../IncomeForm.vue')),
-  EXPENDITURE_FORM: defineAsyncComponent(
-    () => import('../ExpenditureForm.vue')
-  ),
+const components = (formName: ModalView) => {
+  switch (formName) {
+    case 'INCOME_FORM':
+      return defineAsyncComponent(() => import('../IncomeForm.vue'));
+    case 'EXPENDITURE_FORM':
+      return defineAsyncComponent(() => import('../ExpenditureForm.vue'));
+    default:
+      return null;
+  }
 };
 </script>
 
@@ -27,7 +32,7 @@ const components = {
       <button @click="onHandleClickButton" class="text-white p-4">
         <font-awesome-icon icon="times-circle" class="text-xl" />
       </button>
-      <component :is="components[store.getters['ModalStore/view']]" />
+      <component :is="components(store.getters['ModalStore/view'])" />
     </div>
   </teleport>
 </template>
