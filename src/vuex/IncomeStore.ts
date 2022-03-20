@@ -1,8 +1,9 @@
 import { Module } from 'vuex';
+import { IncomeForm } from '../utils/types';
 import { RootState } from './store';
 
 export interface IIncomeState {
-  incomeLists: number[];
+  incomeLists: IncomeForm[];
 }
 
 export const IncomeStore: Module<IIncomeState, RootState> = {
@@ -11,8 +12,13 @@ export const IncomeStore: Module<IIncomeState, RootState> = {
     incomeLists: [],
   },
   mutations: {
-    addIncomeItem: (state, payload: number) => {
+    addIncomeItem: (state, payload: IncomeForm) => {
       state.incomeLists = [...state.incomeLists, payload];
+    },
+  },
+  actions: {
+    addIncomeItem: ({ commit }, payload: IncomeForm) => {
+      commit('addIncomeItem', payload);
     },
   },
 };

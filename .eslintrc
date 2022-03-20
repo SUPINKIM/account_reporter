@@ -6,7 +6,8 @@
   "extends": [
     "plugin:vue/vue3-essential",
     "@vue/typescript/recommended",
-    "prettier"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2020

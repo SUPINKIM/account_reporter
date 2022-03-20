@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Form from './ui/Form.vue';
+</script>
 
 <template>
-  <div class="modal-content-container w-20 h-20 bg-white" @click.stop>
+  <Form>
     <div class="modal-content-title">this is Expenditure</div>
-  </div>
+  </Form>
 </template>
 
 <style scoped></style>
