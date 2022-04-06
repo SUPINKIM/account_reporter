@@ -21,4 +21,8 @@ export const IncomeStore: Module<IIncomeState, RootState> = {
       commit('addIncomeItem', payload);
     },
   },
+  getters: {
+    totalIncome: (state) =>
+      state.incomeLists.reduce((acc, cur) => acc + cur.earning, 0),
+  },
 };

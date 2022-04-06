@@ -13,3 +13,5 @@ export type IncomeForm = {
   category: Category;
   earning: number;
 };
+
+export type ExpenditureForm = Omit<IncomeForm, 'category'>;
