@@ -76,7 +76,7 @@ const onCloseModal = () => {
       <Button @clickButton="onSubmitIncomeInfo" />
       <Button
         :text="'취소'"
-        :color="'bg-neutral-300'"
+        :color="'bg-neutral-400'"
         @clickButton="onCloseModal"
       />
     </div>

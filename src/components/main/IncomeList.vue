@@ -21,7 +21,7 @@ const total: string = computed(() =>
       v-for="(item, index) in list"
     >
       <li
-        class="grid grid-cols-3 gap-x-4 items-center justify-between px-4 shrink border-b border-neutral-200 py-2 mx-2"
+        class="grid grid-cols-3 gap-x-4 items-center justify-between shrink py-2 mx-2 px-4"
       >
         <div class="text-center">
           {{ item.category === 'income' ? '소득' : '주식' }}
@@ -34,8 +34,8 @@ const total: string = computed(() =>
         </div>
       </li>
     </ul>
-    <div class="px-4 text-right mb-4 py-4">
-      <span>나의 현재 총 자산은 {{ total }}원 입니다. </span>
+    <div class="text-right mb-4 py-4 border-t border-neutral-200 px-4 mx-2">
+      <span>나의 현재 총 자산은 {{ total }}원 입니다.</span>
     </div>
   </div>
 </template>

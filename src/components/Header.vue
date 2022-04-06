@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ModalView } from '../utils/types';
 import { useStore } from '../vuex/store';
+import Button from './ui/Button.vue';
 
 const store = useStore();
 
 const buttonStyle =
-  'flex items-center justify-center gap-x-2 px-2 hover:scale-105';
+  'flex items-center justify-center gap-x-2 px-2 hover:scale-105 border rounded-full w-32 h-10 font-semibold text-sm';
 
 const onClickHandle = (payload: ModalView) => {
   store.commit('ModalStore/setModalView', payload);
@@ -14,7 +15,9 @@ const onClickHandle = (payload: ModalView) => {
 </script>
 
 <template>
-  <nav class="w-full h-12 bg-amber-200 cursor-pointer fixed flex">
+  <nav
+    class="w-full h-14 cursor-pointer fixed flex drop-shadow border border-neutral-200 items-center"
+  >
     <div
       id="menu-bar"
       class="w-fit h-full relative left-4 text-xl leading-10 flex items-center hover:scale-105"
@@ -27,14 +30,20 @@ const onClickHandle = (payload: ModalView) => {
       가계 리포터 🚀
     </h1>
     <div
-      class="w-fit justify-center leading-10 gap-x-2 hidden md:flex absolute inset-y-0 right-0"
+      class="w-fit justify-center leading-10 gap-x-2 hidden md:flex absolute inset-y-0 right-0 items-center pr-4"
     >
-      <button :class="buttonStyle" @click="onClickHandle('INCOME_FORM')">
-        수입<font-awesome-icon icon="plus" class="text-red-300" />
-      </button>
-      <button :class="buttonStyle" @click="onClickHandle('EXPENDITURE_FORM')">
-        지출<font-awesome-icon icon="plus" class="text-blue-300" />
-      </button>
+      <Button
+        :class-name="`${buttonStyle} border-red-300 !text-red-300`"
+        :color="'bg-transparent'"
+        :text="'수입 추가하기'"
+        @click-button="onClickHandle('INCOME_FORM')"
+      />
+      <Button
+        :class-name="`${buttonStyle} border-blue-300 !text-blue-300`"
+        :color="'bg-transparent'"
+        :text="'지출 추가하기'"
+        @click-button="onClickHandle('EXPENDITURE_FORM')"
+      />
     </div>
   </nav>
 </template>
