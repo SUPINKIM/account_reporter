@@ -9,4 +9,3 @@ import IncomeList from './IncomeList.vue';
 </template>
 
 <style scoped></style>
->

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ListItem from '../ui/ListItem.vue';
 import { IncomeForm } from '@/utils/types';
 import { useStore } from '@/vuex/store';
 import { computed } from '@vue/reactivity';
@@ -6,7 +7,13 @@ import { convertNumberToCommaNumber } from '@/utils/converter';
 
 const store = useStore();
 
-const list: IncomeForm[] = computed(() => store.state.IncomeStore.incomeLists);
+const list: IncomeForm[] = computed(() =>
+  store.state.IncomeStore.incomeLists.map((item) => ({
+    ...item,
+    ...{ category: item.category === 'income' ? '소득' : '주식' },
+    ...{ cycle: item.cycle === 'fixed' ? '고정 수입' : '비고정 수입' },
+  }))
+);
 const total: string = computed(() =>
   convertNumberToCommaNumber(store.getters['IncomeStore/totalIncome'])
 );
@@ -15,25 +22,7 @@ const total: string = computed(() =>
 <template>
   <div class="w-96 m-4 shadow-slate-400 shadow-md rounded-md">
     <h1 class="font-bold my-4 pt-4 text-center text-lg">💰 나의 수입 💵</h1>
-    <ul
-      class="h-fitflex flex-col gap-y-4"
-      :key="index"
-      v-for="(item, index) in list"
-    >
-      <li
-        class="grid grid-cols-3 gap-x-4 items-center justify-between shrink py-2 mx-2 px-4"
-      >
-        <div class="text-center">
-          {{ item.category === 'income' ? '소득' : '주식' }}
-        </div>
-        <div class="text-center">
-          {{ item.cycle === 'fixed' ? '고정 수입' : '비고정 수입' }}
-        </div>
-        <div class="text-right">
-          {{ convertNumberToCommaNumber(item.earning) }}원
-        </div>
-      </li>
-    </ul>
+    <list-item :list="list" />
     <div class="text-right mb-4 py-4 border-t border-neutral-200 px-4 mx-2">
       <span>나의 현재 총 자산은 {{ total }}원 입니다.</span>
     </div>

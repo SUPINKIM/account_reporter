@@ -15,3 +15,9 @@ export type IncomeForm = {
 };
 
 export type ExpenditureForm = Omit<IncomeForm, 'category'>;
+
+export type ListItemProps = {
+  cycle: string;
+  category: string;
+  earning: number;
+};
